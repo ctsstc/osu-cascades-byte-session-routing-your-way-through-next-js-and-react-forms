@@ -1,8 +1,13 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
+import React from 'react';
+
+import Navigation from '../components/navigation';
 
 const Home: NextPage = () => {
+  const [username, setUsername] = React.useState('Coder')
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -10,13 +15,19 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Navigation />
+
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+        <h1 className="text-6xl font-bold">Hello {username}</h1>
+
+        {/* an input field that binds to the username */}
+        <input
+          className="my-4 w-full max-w-sm border p-2"
+          type="text"
+          placeholder="Enter your name"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
